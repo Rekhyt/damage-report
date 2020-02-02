@@ -25,19 +25,16 @@ Interactively: `I_API_KEY=12345abcd ./start.sh`
 Background: `I_API_KEY=12345abcd ./service.sh`
 
 ## Posting Data
-Post data to the `/command` route of the service:
+Post data as `application/json`JSON to the `/command` API route.
 
-```http request
-POST /command
-Content-Type: application/json
-
+```json
 {
-	"name": "ClimateData.updateData",
-	"payload": {
-        "locationName": "kitchen",
-        "temperature": "22.1",
-        "humidity": "38"
-   }
+  "name": "ClimateData.updateData",
+  "payload": {
+    "locationName": "kitchen",
+    "temperature": "22.1",
+    "humidity": "38"
+  }
 }
 ```
 
@@ -52,13 +49,9 @@ Examples:
 * production.damageReport.livingRoom.humidity
 
 ### Current Values
-Current values can be fetched from the `/dashboard` API route:
+Current values can be fetched from the `/dashboard` API route.
 
-```http request
-GET /dashboard
-```
-
-Results will look like this:
+Example results:
 ```json
 {
   "kitchen": {
