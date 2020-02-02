@@ -1,0 +1,35 @@
+{
+  "name": "damage-report",
+  "version": "1.0.0-alpha.1",
+  "description": "Damage report, Bob.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rekhyt/damage-report.git"
+  },
+  "author": "timo.ebel@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Rekhyt/damage-report/issues"
+  },
+  "homepage": "https://github.com/Rekhyt/damage-report#readme",
+  "dependencies": {
+    "bunyan": "^1.8.12",
+    "convict": "^5.2.0",
+    "ddd-js": "^1.0.0-alpha.25",
+    "instrumental-agent": "^2.3.0"
+  },
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-standard": "^14.1.0",
+    "eslint-plugin-import": "^2.20.0",
+    "eslint-plugin-node": "^11.0.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "eslint-standard": "^1.0.2"
+  }
+}
