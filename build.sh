@@ -1,1 +1,1 @@
-docker build -t damage-report:v1.0.0-alpha.1 .
+docker build -t damage-report:${TAG:-development} .

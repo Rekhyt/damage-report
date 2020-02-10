@@ -15,14 +15,22 @@ providing a local route to fetch the current values.
 
 ## Run In Docker
 ### Build Image
-For i386/x64 architectures: `./build.sh`
+Images for amd64 and arm architecture are supported. The build commands will only succeed in the target environment.
+Use the `TAG` env to specify a custom tag, defaults to `development`.
 
-For Raspbian OS: `./build-rpi.sh`
+For amd64: `TAG=custom ./build.sh` creates damage-report:custom
 
-### Run Container
+For arm: `TAG=custom ./build-arm.sh` creates damage-report:custom-arm
+
+### Run Container (amd64)
 Interactively: `I_API_KEY=12345abcd ./start.sh`
 
 Background: `I_API_KEY=12345abcd ./service.sh`
+
+### Run Container (arm)
+Interactively: `I_API_KEY=12345abcd TAG=development-arm ./start.sh`
+
+Background: `I_API_KEY=12345abcd TAG=development-arm ./service.sh`
 
 ## Posting Data
 Post data as `application/json`JSON to the `/command` API route.

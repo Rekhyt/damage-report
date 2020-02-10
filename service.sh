@@ -1,1 +1,1 @@
-docker run -d --rm -e NODE_ENV=${NODE_ENV:-development} -e LOG_LEVEL=${LOG_LEVEL:-info} -e I_API_KEY=${I_API_KEY} --name damage-report -p ${PORT:-8000}:8000 damage-report:v1.0.0-alpha.1
+docker run -d --rm -e NODE_ENV=${NODE_ENV:-development} -e LOG_LEVEL=${LOG_LEVEL:-info} -e I_API_KEY=${I_API_KEY} --name damage-report -p ${PORT:-8000}:8000 damage-report:${TAG:-development}

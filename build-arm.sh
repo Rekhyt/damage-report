@@ -1,0 +1,1 @@
+docker build --build-arg IMAGE=balenalib/rpi-alpine-node:latest -t damage-report:${TAG:-development}-arm .
