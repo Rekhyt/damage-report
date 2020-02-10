@@ -2,7 +2,9 @@ const { ReadModel } = require('ddd-js')
 
 class Dashboard extends ReadModel {
   setup () {
-    this._data = {}
+    this._data = {
+      locationClimate: {}
+    }
 
     this.registerEvent('ClimateData.dataUpdated', event => this.updateData(
       event.payload.locationName,
@@ -22,10 +24,10 @@ class Dashboard extends ReadModel {
    * @returns {Promise<void>}
    */
   async updateData (locationName, temperature, humidity) {
-    if (!this._data[locationName]) this._data[locationName] = { temperature: null, humidity: null }
+    if (!this._data.locationClimate[locationName]) this._data.locationClimate[locationName] = { temperature: null, humidity: null }
 
-    this._data[locationName].temperature = temperature
-    this._data[locationName].humidity = humidity
+    this._data.locationClimate[locationName].temperature = temperature
+    this._data.locationClimate[locationName].humidity = humidity
   }
 }
 

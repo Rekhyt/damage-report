@@ -26,7 +26,7 @@ class Instrumental extends ReadModel {
    * @returns {Promise<void>}
    */
   async pushClimateToI (locationName, temperature, humidity) {
-    this.logger.info({ locationName, temperature, humidity }, 'Publishing to I . . .')
+    this.logger.debug({ locationName, temperature, humidity }, 'Publishing to instrumentalapp.com . . .')
 
     I.gauge(`${this.env}.damageReport.${locationName}.temperature`, temperature)
     I.gauge(`${this.env}.damageReport.${locationName}.humidity`, humidity)

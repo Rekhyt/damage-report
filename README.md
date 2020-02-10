@@ -62,13 +62,15 @@ Current values can be fetched from the `/dashboard` API route.
 Example results:
 ```json
 {
-  "kitchen": {
-    "temperature": "22.1",
-    "humidity": "38"
-  },
-  "livingRoom": {
-    "temperature": "23.5",
-    "humidity": "42"
+  "locationClimate": {
+    "kitchen": {
+      "temperature": "22.1",
+      "humidity": "38"
+    },
+    "livingRoom": {
+      "temperature": "23.5",
+      "humidity": "42"
+    }
   }
 }
 ```
