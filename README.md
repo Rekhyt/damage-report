@@ -10,11 +10,23 @@ providing a local route to fetch the current values.
 * `PORT` - the port to run the application on (default: `8000`)
 * `I_API_KEY` - The API key to use for the instrumentalapp.com monitoring service
 
-## Run Locally
+## Run From Docker Hub
+### Development / Current Master
+
+`I_API_KEY=12345abcd docker --rm --name damage-report -d lapwing/damage-report:latest`
+
+### Tags
+Starting from v1.0.0-alpha.3, semver-tagged images are architecture aware. Supported architectures are amd64 or arm
+(tested on a Raspberry Pi 3). Find available tags at [Docker Hub](https://hub.docker.com/r/lapwing/damage-report/tags).
+
+`I_API_KEY=12345abcd docker --rm --name damage-report -d lapwing/damage-report:v1.0.0-alpha.3`
+
+## Run From Project
+### Natively
 `I_API_KEY=12345abcd npm start`
 
-## Run In Docker
-### Build Image
+### In A Docker Container
+#### Build Image
 Images for amd64 and arm architecture are supported. The build commands will only succeed in the target environment.
 Use the `TAG` env to specify a custom tag, defaults to `development`.
 
@@ -22,12 +34,12 @@ For amd64: `TAG=custom ./build.sh` creates damage-report:custom
 
 For arm: `TAG=custom ./build-arm.sh` creates damage-report:custom-arm
 
-### Run Container (amd64)
+#### Run Container (amd64)
 Interactively: `I_API_KEY=12345abcd ./start.sh`
 
 Background: `I_API_KEY=12345abcd ./service.sh`
 
-### Run Container (arm)
+#### Run Container (arm)
 Interactively: `I_API_KEY=12345abcd TAG=development-arm ./start.sh`
 
 Background: `I_API_KEY=12345abcd TAG=development-arm ./service.sh`
