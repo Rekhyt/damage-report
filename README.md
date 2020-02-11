@@ -16,7 +16,7 @@ providing a local route to fetch the current values.
 `I_API_KEY=12345abcd docker --rm --name damage-report -d lapwing/damage-report:latest`
 
 ### Tags
-Starting from v1.0.0-alpha.3, semver-tagged images are architecture aware. Supported architectures are amd64 or arm
+Starting from v1.0.0-alpha.3, semver-tagged images are architecture aware. Supported architectures are amd64 or armv7
 (tested on a Raspberry Pi 3). Find available tags at [Docker Hub](https://hub.docker.com/r/lapwing/damage-report/tags).
 
 `I_API_KEY=12345abcd docker --rm --name damage-report -d lapwing/damage-report:v1.0.0-alpha.3`
