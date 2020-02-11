@@ -20,7 +20,7 @@ before_install:
 
 install: skip
 
-script: bash TRAVIS_TAG=latest ./build/build-push-docker.sh
+script: TRAVIS_TAG=latest bash ./build/build-push-docker.sh
 
 deploy:
   provider: script
