@@ -1,9 +1,11 @@
 const { RootEntity, ValidationError } = require('ddd-js')
+const LocationId = require('./ValueObject/LocationId')
 const LocationName = require('./ValueObject/LocationName')
 
 class ClimateData extends RootEntity {
   setup () {
     this.registerCommand('ClimateData.updateData', async command => this.updateData(
+      command.payload.locationId,
       command.payload.locationName,
       command.payload.temperature,
       command.payload.humidity
@@ -11,13 +13,21 @@ class ClimateData extends RootEntity {
   }
 
   /**
+   * @param {string} rawLocationId
    * @param {string} rawLocationName
    * @param {number} temperature
    * @param {number} humidity
    * @returns {Promise<Event[]>}
    */
-  async updateData (rawLocationName, temperature, humidity) {
+  async updateData (rawLocationId, rawLocationName, temperature, humidity) {
     const validationError = new ValidationError()
+
+    let locationId
+    try {
+      locationId = new LocationId(rawLocationId)
+    } catch (err) {
+      validationError.addInvalidField('locationId', err.message)
+    }
 
     let locationName
     try {
@@ -36,7 +46,12 @@ class ClimateData extends RootEntity {
 
     if (validationError.hasErrors()) throw validationError
 
-    return [this.createEvent('ClimateData.dataUpdated', { locationName: locationName.getValue(), temperature, humidity })]
+    return [this.createEvent('ClimateData.dataUpdated', {
+      locationId: locationId.getValue(),
+      locationName: locationName.getValue(),
+      temperature,
+      humidity
+    })]
   }
 }
 

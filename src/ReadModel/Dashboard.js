@@ -7,6 +7,7 @@ class Dashboard extends ReadModel {
     }
 
     this.registerEvent('ClimateData.dataUpdated', event => this.updateData(
+      event.payload.locationId,
       event.payload.locationName,
       event.payload.temperature,
       event.payload.humidity
@@ -18,16 +19,16 @@ class Dashboard extends ReadModel {
   }
 
   /**
+   * @param {string} locationId
    * @param {string} locationName
    * @param {number} temperature
    * @param {number} humidity
    * @returns {Promise<void>}
    */
-  async updateData (locationName, temperature, humidity) {
-    if (!this._data.locationClimate[locationName]) this._data.locationClimate[locationName] = { temperature: null, humidity: null }
+  async updateData (locationId, locationName, temperature, humidity) {
+    if (!this._data.locationClimate[locationId]) this._data.locationClimate[locationId] = { temperature: null, humidity: null }
 
-    this._data.locationClimate[locationName].temperature = temperature
-    this._data.locationClimate[locationName].humidity = humidity
+    this._data.locationClimate[locationId] = { locationName, temperature, humidity }
   }
 }
 

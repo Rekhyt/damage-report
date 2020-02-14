@@ -13,23 +13,23 @@ class Instrumental extends ReadModel {
     })
 
     this.registerEvent('ClimateData.dataUpdated', event => this.pushClimateToI(
-      event.payload.locationName,
+      event.payload.locationId,
       event.payload.temperature,
       event.payload.humidity
     ))
   }
 
   /**
-   * @param {string} locationName
+   * @param {string} locationId
    * @param {number} temperature
    * @param {number} humidity
    * @returns {Promise<void>}
    */
-  async pushClimateToI (locationName, temperature, humidity) {
-    this.logger.debug({ locationName, temperature, humidity }, 'Publishing to instrumentalapp.com . . .')
+  async pushClimateToI (locationId, temperature, humidity) {
+    this.logger.debug({ locationName: locationId, temperature, humidity }, 'Publishing to instrumentalapp.com . . .')
 
-    I.gauge(`${this.env}.damageReport.${locationName}.temperature`, temperature)
-    I.gauge(`${this.env}.damageReport.${locationName}.humidity`, humidity)
+    I.gauge(`${this.env}.damageReport.${locationId}.temperature`, temperature)
+    I.gauge(`${this.env}.damageReport.${locationId}.humidity`, humidity)
   }
 }
 
