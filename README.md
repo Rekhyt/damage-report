@@ -1,4 +1,8 @@
 # damage-report
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Build Status](https://travis-ci.org/Rekhyt/damage-report.svg?branch=master)](https://travis-ci.org/Rekhyt/damage-report)
+[![Latest Tag](https://img.shields.io/github/v/tag/rekhyt/damage-report?style=flat)](https://github.com/Rekhyt/damage-report/releases)
+
 Damage report, Bob.
 
 A small service receiving climate data (temperature, humidity) per location, pushing it on to instrumentalapp.com and
