@@ -32,7 +32,7 @@ const config = convict({
 })
 
 const env = config.get('application.env')
-config.load(`./${env}.js`)
+config.load(require(`./${env}.js`))
 
 config.validate()
 
