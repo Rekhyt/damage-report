@@ -19,7 +19,13 @@ if (config.application.logToLoggly && config.loggly.subdomain && config.loggly.t
 }
 const logger = bunyan.createLogger({ name: 'damage-report', level: config.application.logLevel, streams: logStreams })
 
-logger.info(config, 'Using configuration . . .')
+const logConfig = {
+  application: { ...config.application },
+  loggly: { ...config.loggly, token: 'XXX' },
+  instrumental: { ...config.instrumental, apiKey: 'XXX' }
+}
+
+logger.info(logConfig, 'Using configuration . . .')
 
 const runner = Runner
   .createWithExpress(logger, '/dev/null')
