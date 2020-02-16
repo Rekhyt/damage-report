@@ -1,4 +1,6 @@
 module.exports = {
-  logToConsole: false,
-  logToLoggly: true
+  application: {
+    logToConsole: false,
+    logToLoggly: true
+  }
 }
