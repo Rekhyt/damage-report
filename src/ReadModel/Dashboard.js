@@ -28,6 +28,7 @@ class Dashboard extends ReadModel {
   async updateData (locationId, locationName, temperature, humidity) {
     if (!this._data.locationClimate[locationId]) this._data.locationClimate[locationId] = { temperature: null, humidity: null }
 
+    this.logger.info({ locationId, temperature, humidity }, 'Updating dashboard . . .')
     this._data.locationClimate[locationId] = { locationName, temperature, humidity }
   }
 }

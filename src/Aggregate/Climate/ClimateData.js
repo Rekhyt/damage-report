@@ -20,6 +20,7 @@ class ClimateData extends RootEntity {
    * @returns {Promise<Event[]>}
    */
   async updateData (rawLocationId, rawLocationName, temperature, humidity) {
+    this.logger.info({ rawLocationId, rawLocationName, temperature, humidity }, 'Validating command . . .')
     const validationError = new ValidationError()
 
     let locationId
