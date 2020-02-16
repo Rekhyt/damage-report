@@ -19,6 +19,32 @@ const config = convict({
       format: ['trace', 'debug', 'info', 'warn', 'error', 'fatal'],
       default: 'info',
       env: 'LOG_LEVEL'
+    },
+    logToConsole: {
+      doc: 'Switch logging to the console on/off.',
+      format: 'Boolean',
+      default: false,
+      env: 'LOG_TO_CONSOLE'
+    },
+    logToLoggly: {
+      doc: 'Switch logging to loggly.com on/off.',
+      format: 'Boolean',
+      default: false,
+      env: 'LOG_TO_LOGGLY'
+    }
+  },
+  loggly: {
+    subdomain: {
+      doc: 'The loggly.com sub domain that logs should be sent to.',
+      format: '*',
+      default: '',
+      env: 'LOGGLY_SUBDOMAIN'
+    },
+    token: {
+      doc: 'The access token for your loggy.com account.',
+      format: '*',
+      default: '',
+      env: 'LOGGLY_TOKEN'
     }
   },
   instrumental: {

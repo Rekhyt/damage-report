@@ -10,9 +10,17 @@ providing a local route to fetch the current values.
 
 ## Configuration
 * `NODE_ENV` - one of `development` or `production` (default: `development`)
-* `LOG_LEVEL` - one of `trace`, `debug`, `info`, `warn`, `error`, `fatal` (default: `info`)
 * `PORT` - the port to run the application on (default: `8000`)
-* `I_API_KEY` - The API key to use for the instrumentalapp.com monitoring service
+* `LOG_LEVEL` - one of `trace`, `debug`, `info`, `warn`, `error`, `fatal` (default: `info`)
+* `LOG_TO_CONSOLE` - enable logging to console (defaults: `true` on development; `false` on production)
+* `LOG_TO_LOGGLY` - enable logging to loggly.com (defaults: `false` on development; `true` on production)
+* `LOGGLY_SUBDOMAIN` - your loggly.com sub domain
+* `LOGGLY_TOKEN` - a loggly.com access token
+* `I_API_KEY` - the API key to use for the instrumentalapp.com monitoring service
+
+**Note:** Logging to console is disabled on production by default because when running in a Docker container, console
+logs are saved to disc or, in case of Raspberry Pi, the SD card. Disabling console logs in that scenario is supposed to
+spare the SD card from wearing out.
 
 ## Run From Docker Hub
 ### Development / Current Master
@@ -55,7 +63,8 @@ Post data as `application/json`JSON to the `/command` API route.
 {
   "name": "ClimateData.updateData",
   "payload": {
-    "locationName": "kitchen",
+    "locationId": "kitchen",
+    "locationName":  "Kitchen",
     "temperature": "22.1",
     "humidity": "38"
   }
@@ -65,8 +74,8 @@ Post data as `application/json`JSON to the `/command` API route.
 ## Getting Data
 ### Instrumental (instrumentalapp.com)
 Data is pushed to instrumentalapp.com metrics, prefixed with environment:
-* [env].damageReport.[locationName].temperature
-* [env].damageReport.[locationName].humidity
+* [env].damageReport.[locationId].temperature
+* [env].damageReport.[locationId].humidity
 
 Examples:
 * development.damageReport.kitchen.temperature
@@ -80,10 +89,12 @@ Example results:
 {
   "locationClimate": {
     "kitchen": {
+      "locationName": "Kitchen",
       "temperature": "22.1",
       "humidity": "38"
     },
     "livingRoom": {
+      "locationName": "Living Room",
       "temperature": "23.5",
       "humidity": "42"
     }

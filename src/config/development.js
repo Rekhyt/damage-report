@@ -1,5 +1,7 @@
 module.exports = {
   application: {
-    logLevel: 'debug'
+    logLevel: 'debug',
+    logToConsole: true,
+    logToLoggly: false
   }
 }
