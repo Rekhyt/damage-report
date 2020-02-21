@@ -11,6 +11,7 @@ providing a local route to fetch the current values.
 ## Configuration
 * `NODE_ENV` - one of `development` or `production` (default: `development`)
 * `PORT` - the port to run the application on (default: `8000`)
+* `LOG_NAME` - the application name to be used on log messages (default: `damage-report-service`)
 * `LOG_LEVEL` - one of `trace`, `debug`, `info`, `warn`, `error`, `fatal` (default: `info`)
 * `LOG_TO_CONSOLE` - enable logging to console (defaults: `true` on development; `false` on production)
 * `LOG_TO_LOGGLY` - enable logging to loggly.com (defaults: `false` on development; `true` on production)

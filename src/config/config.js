@@ -14,6 +14,12 @@ const config = convict({
       default: 8000,
       env: 'PORT'
     },
+    logName: {
+      doc: 'Name of the application to be used in logging.',
+      format: '*',
+      default: 'damage-report-service',
+      env: 'LOG_NAME'
+    },
     logLevel: {
       doc: 'The log level for the application.',
       format: ['trace', 'debug', 'info', 'warn', 'error', 'fatal'],

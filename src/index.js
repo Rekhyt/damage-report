@@ -17,7 +17,7 @@ if (config.application.logToLoggly && config.loggly.subdomain && config.loggly.t
     })
   })
 }
-const logger = bunyan.createLogger({ name: 'damage-report', level: config.application.logLevel, streams: logStreams })
+const logger = bunyan.createLogger({ name: config.application.logName, level: config.application.logLevel, streams: logStreams })
 
 const logConfig = {
   application: { ...config.application },
