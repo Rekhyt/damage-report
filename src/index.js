@@ -27,11 +27,18 @@ const logConfig = {
 
 logger.info(logConfig, 'Using configuration . . .')
 
-const runner = Runner
-  .createWithExpress(logger, '/dev/null')
-  .attachRootEntity(ClimateData)
-  .attachReadModel('/dashboard', DashboardReadModel, 'data')
+const runner = Runner.createWithExpress(logger, '/dev/null')
+
+if (config.application.corsAllowedOrigin) {
+  runner.server.use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', config.application.corsAllowedOrigin)
+    next()
+  })
+}
 
 if (config.instrumental.apiKey) runner.attachReadModel('/instrumental', InstrumentalReadModel, 'readme')
 
-runner.startServer(config.application.port)
+runner
+  .attachRootEntity(ClimateData)
+  .attachReadModel('/dashboard', DashboardReadModel, 'data')
+  .startServer(config.application.port)

@@ -37,6 +37,12 @@ const config = convict({
       format: 'Boolean',
       default: false,
       env: 'LOG_TO_LOGGLY'
+    },
+    corsAllowedOrigin: {
+      doc: 'The value to be sent in the Access-Control-Allow-Origin header. Empty string to disallow any web client..',
+      format: '*',
+      default: '*',
+      env: 'CORS_ALLOWED_ORIGIN'
     }
   },
   loggly: {
