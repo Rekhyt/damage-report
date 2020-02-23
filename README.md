@@ -11,6 +11,7 @@ providing a local route to fetch the current values.
 ## Configuration
 * `NODE_ENV` - one of `development` or `production` (default: `development`)
 * `PORT` - the port to run the application on (default: `8000`)
+* `CORS_ALLOWED_ORIGIN` - the value to be returned in the Access-Control-Allow-Origin header (default: `*`)
 * `LOG_NAME` - the application name to be used on log messages (default: `damage-report-service`)
 * `LOG_LEVEL` - one of `trace`, `debug`, `info`, `warn`, `error`, `fatal` (default: `info`)
 * `LOG_TO_CONSOLE` - enable logging to console (defaults: `true` on development; `false` on production)
