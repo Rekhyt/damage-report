@@ -1,4 +1,4 @@
-const config = require('../config/config')
+const config = require('../../config/config')
 const { ReadModel } = require('ddd-js')
 const I = require('instrumental-agent')
 

@@ -1,4 +1,4 @@
-const config = require('./config/config')
+const config = require('../config/config')
 const bunyan = require('bunyan')
 const { Runner } = require('ddd-js')
 

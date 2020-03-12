@@ -4,6 +4,7 @@ FROM $IMAGE
 RUN apk add --no-cache python3 make gcc
 
 COPY ./src /app/src
+COPY ./config /app/config
 COPY ./package.json /app/package.json
 
 WORKDIR /app
