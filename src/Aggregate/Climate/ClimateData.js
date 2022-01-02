@@ -51,7 +51,8 @@ class ClimateData extends RootEntity {
       locationId: locationId.getValue(),
       locationName: locationName.getValue(),
       temperature,
-      humidity
+      humidity,
+      lastUpdated: Date.now()
     })]
   }
 }

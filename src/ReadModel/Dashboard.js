@@ -10,7 +10,8 @@ class Dashboard extends ReadModel {
       event.payload.locationId,
       event.payload.locationName,
       event.payload.temperature,
-      event.payload.humidity
+      event.payload.humidity,
+      event.payload.lastUpdated
     ))
   }
 
@@ -23,13 +24,14 @@ class Dashboard extends ReadModel {
    * @param {string} locationName
    * @param {number} temperature
    * @param {number} humidity
+   * @param {number} lastUpdated
    * @returns {Promise<void>}
    */
-  async updateData (locationId, locationName, temperature, humidity) {
-    if (!this._data.locationClimate[locationId]) this._data.locationClimate[locationId] = { temperature: null, humidity: null }
+  async updateData (locationId, locationName, temperature, humidity, lastUpdated) {
+    if (!this._data.locationClimate[locationId]) this._data.locationClimate[locationId] = { temperature: null, humidity: null, lastUpdated: null }
 
     this.logger.info({ locationId, temperature, humidity }, 'Updating dashboard . . .')
-    this._data.locationClimate[locationId] = { locationName, temperature, humidity }
+    this._data.locationClimate[locationId] = { locationName, temperature, humidity, lastUpdated }
   }
 }
 
